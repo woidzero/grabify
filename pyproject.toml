@@ -1,0 +1,75 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "grabify-cli"
+dynamic = ["version"]
+description = '🎼 A command-line tool that allows you to download artwork and metadata from Spotify tracks and albums without authentication.'
+readme = "README.md"
+requires-python = ">=3.7"
+license = "MIT"
+authors = [{ name = "woidzero" }]
+keywords = ["console", "cli", "command-line", "grabify", "spotify", "spotipy"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["lxml", "rich", "BeautifulSoup4", "requests", "click"]
+
+[project.urls]
+Homepage = "https://github.com/woidzero/grabify"
+Documentation = "https://github.com/woidzero/grabify#readme"
+Issues = "https://github.com/woidzero/grabify/issues"
+Source = "https://github.com/woidzero/grabify"
+
+[project.scripts]
+grabify = "src.grabify_cli.__main__:main"
+
+[tool.hatch.version]
+path = "src/grabify_cli/__init__.py"
+
+[tool.black]
+target-version = ["py37"]
+skip-string-normalization = true
+
+[tool.ruff]
+target-version = "py37"
+line-length = 120
+ignore = [
+  # Allow non-abstract empty methods in abstract base classes
+  "B027",
+  # Allow boolean positional values in function calls, like `dict.get(... True)`
+  "FBT003",
+  # Ignore checks for possible passwords
+  "S105",
+  "S106",
+  "S107",
+  # Ignore complexity
+  "C901",
+  "PLR0911",
+  "PLR0912",
+  "PLR0913",
+  "PLR0915",
+]
+unfixable = [
+  # Don't touch unused imports
+  "F401",
+]
+
+[tool.ruff.isort]
+known-first-party = ["grabify"]
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"

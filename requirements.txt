@@ -1,0 +1,5 @@
+rich
+beautifulsoup4
+requests
+lxml
+click
