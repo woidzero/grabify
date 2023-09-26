@@ -35,10 +35,10 @@ Issues = "https://github.com/woidzero/grabify/issues"
 Source = "https://github.com/woidzero/grabify"
 
 [project.scripts]
-grabify = "src.grabify_cli.__main__:main"
+grabify = "grabify.__main__:main"
 
 [tool.hatch.version]
-path = "src/grabify_cli/__init__.py"
+path = "grabify/__init__.py"
 
 [tool.black]
 target-version = ["py311"]
@@ -70,6 +70,3 @@ unfixable = [
 
 [tool.ruff.isort]
 known-first-party = ["grabify"]
-
-[tool.ruff.flake8-tidy-imports]
-ban-relative-imports = "all"
